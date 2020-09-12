@@ -7,6 +7,7 @@ Two type of users of CanvasPath are: Students and Faculty Members, where Adminis
 Three parts need to be managed in CanvasPath are: Departments, Courses, Sections, where Capstone section is a special type of section where exams are replaced by Capstone projects. 
 
 Here is the list of requirements and constrains for each users and parts: 
+
 •	Students:
 
 o	Students can only see their own grades
