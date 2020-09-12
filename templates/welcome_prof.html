@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Grayrids">
+    <title>Lion State Professor</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/style/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style/css/line-icons.css">
+    <link rel="stylesheet" href="../static/style/css/owl.carousel.css">
+    <link rel="stylesheet" href="../static/style/css/owl.theme.css">
+    <link rel="stylesheet" href="../static/style/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="../static/style/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/style/css/animate.css">
+    <link rel="stylesheet" href="../static/style/css/color-switcher.css">
+    <link rel="stylesheet" href="../static/style/css/menu_sideslide.css">
+    <link rel="stylesheet" href="../static/style/css/main.css">
+    <link rel="stylesheet" href="../static/style/css/responsive.css">
+      <link rel="stylesheet" type="text/css" href="../static/style/css/datatables.css"/>
+
+        <script type="text/javascript" src="../static/style/js/datatables.min.js"></script>
+
+      	<script type="text/javascript" class="init">
+
+
+$(document).ready(function() {
+	var table = $('#example').DataTable({
+		columnDefs: [{
+			orderable: false,
+			targets: [1,2,3]
+		}]
+	});
+
+	$('button').click( function() {
+		var data = table.$('input, select').serialize();
+		alert(
+			"The following data would have been submitted to the server: \n\n"+
+			data.substr( 0, 120 )+'...'
+		);
+		return false;
+	} );
+} );
+
+
+	</script>
+
+  </head>
+
+  <body>
+    <!-- Header Section Start -->
+    <header id="slider-area">
+      <nav class="navbar navbar-expand-md fixed-top scrolling-navbar bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="welcome_prof.html"><span class="lni-bulb"></span>LION STATE Professor</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="lni-menu"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#slider-area">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Department">Course</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Courses">Create Assignment</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Capstone">Capstone</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Carousel Section -->
+      <div id="carousel-area">
+        <div id="carousel-slider" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-slider" data-slide-to="1"></li>
+            <li data-target="#carousel-slider" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img src="../static/style/img/slider/bg-1.jpg" alt="">
+              <div class="carousel-caption text-left">
+                <h3 class="wow fadeInRight" data-wow-delay="0.2s">Good Afternoon</h3>
+                <h3 class="wow fadeInRight" data-wow-delay="0.4s">{{ message }}</h3>
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="../static/style/img/slider/bg-3.jpg" alt="">
+              <div class="carousel-caption text-center">
+                <h3 class="wow fadeInDown" data-wow-delay="0.3s">Lion State</h3>
+                <h2 class="wow bounceIn" data-wow-delay="0.6s">News Update</h2>
+                <h4 class="wow fadeInUp" data-wow-delay="0.9s">Faculty Advising Center</h4>
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="../static/style/img/slider/bg-2.jpg" alt="">
+              <div class="carousel-caption text-center">
+                <h3 class="wow fadeInDown" data-wow-delay="0.3s">Activiey Center</h3>
+                <h2 class="wow fadeInRight" data-wow-delay="0.6s">Research Opportunities</h2>
+                <h4 class="wow fadeInUp" data-wow-delay="0.6s">Explore Your Campus Life</h4>
+
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+            <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-left"></i></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+            <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-right"></i></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Department Section Start -->
+    <section id="Department" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Course Information</h2>
+                <span>Grade</span>
+        <form action='' class="form-inline" method="post">
+
+          <button type="submit" class="btn btn-common btn-effect" style="padding: 10px 30px; font-size:10pt;width:180px">Check Grades</button>
+
+        <input type="text" class="form-control" name="prehomework" placeholder="Homework Number" style="margin-left:100px;margin-top:20PX;padding: 10px 30px;font-size:10pt;width:200px">
+        <input type="text" class="form-control" name="preexam" placeholder="Exam Number" style="margin-left:100px;margin-top:20PX;padding: 10px 30px;font-size:10pt;width:200px" >
+
+         </form>
+
+          <br><br>
+
+           <div id="example_wrapper" class="dataTables_wrapper" role="grid"><div id="example_length" class="dataTables_length"><label>Show <select size="1" name="example_length" aria-controls="example"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div class="dataTables_filter" id="example_filter"><label>Search: <input type="text" aria-controls="example"></label></div>
+                <table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="example" aria-describedby="example_info">
+	<thead>
+    <tr>
+		  <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;color:black">Student</th>
+		  <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;color:black">Class</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 150px;color:black">Section</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 98px;color:black">Homework No.</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 67px;color:black">HW grade</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Check: activate to sort column ascending" style="width: 43px;color:black">Exam No.</th>
+	        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Check: activate to sort column ascending" style="width: 43px;color:black">Exam Grade</th>
+    </tr>
+	</thead>
+
+
+        <tbody role="alert" aria-live="polite" aria-relevant="all">
+        <form action="/change" method="post">
+        {% for row in value %}
+                    <tr class="gradeA odd">
+                    <td name="email[]">{{ row[0] }} </td>
+                        <input type="hidden"  name="email[]" value="{{ row[0] }}"/>
+                    <td name="course_no[]">  {{ row[1]}}</td>
+                        <input type="hidden" name="course_no[]" value="{{ row[1]}}"/>
+                    <td name="section_no[]"> {{ row[2] }}</td>
+                        <input type="hidden"  name="section_no[]" value="{{ row[2] }}"/>
+                        <td name="hw[]">{{ row[3] }}</td>
+                        <input type="hidden"  name="hw[]" value="{{ row[3] }}"/>
+                        <td><input type="number" name="hwgrade[]" value={{ row[4] }}></td>
+                        <td name="exam[]">{{ row[5] }}</td>
+                        <input type="hidden" name="exam[]" value="{{ row[5] }}"/>
+                        <td><input  type="number" name='examgrade[]' value={{ row[6] }}></td>
+
+                    </tr>
+        {% endfor %}
+
+            <button type="submit" class="btn btn-common btn-effect" style="margin-top: -10px;margin-bottom: 6px;">Submit Grades</button>
+
+           <tfoot>
+           <tr>
+     <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;color:black">Student</th>
+		  <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;color:black">Class</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 150px;color:black">Section</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 98px;color:black">Homework No.</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 67px;color:black">HW grade</th>
+            <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Check: activate to sort column ascending" style="width: 43px;color:black">Exam No.</th>
+	        <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Check: activate to sort column ascending" style="width: 43px;color:black">Exam Grade</th>
+    </tr>
+           </tfoot>
+
+            </form>
+        </tbody>
+    </table>
+
+      </div>
+      </div>
+      </div>
+    </section>
+    <!-- Services Section End -->
+
+
+    <!-- Courses Section Start -->
+    <section id="Courses" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Create Assignment</h2>
+                <span>Assignment</span>
+
+            <div class="subscribe-form">
+              <div class="form-wrapper">
+                <div class="sub-title text-center">
+
+            <form action="/create" method="POST">
+
+            <p>Course ID:</p> <br>
+                 <div class="col-md-12 form-line">
+                      <div class="form-group">
+            <input type="text" class="form-control" name="course" style="font-size:14pt;height:20px"><br>
+                      </div>
+                 </div>
+            <br><br>
+
+
+                <p>Section Number :</p> <br>
+
+                <input type="text" name="section" class="form-control" style="font-size:14pt;height:25px">
+
+            <br><br>
+
+
+                <p>Assignment Type:</p> <br>
+                    <input type='text' name="assignment" class="form-control" style="font-size:14pt;height:25px">
+
+            <br><br>
+
+
+                <p>Assignment Number:</p> <br>
+                 <div class="col-md-12 form-line">
+                      <div class="form-group">
+            <input type="text" class="form-control"  name="number" style="font-size:14pt;height:20px"><br>
+                      </div>
+                 </div>
+            <br><br>
+
+
+                <p>Assignment Details: </p><br>
+            <textarea name="comments" class="form-control" rows="15" cols="50"></textarea><br><br>
+
+           <div class="col-12">
+                      <div class="form-submit">
+                        <button type="submit" class="btn btn-common btn-effect">Create Assignment </button>
+                      </div>
+                    </div>
+
+            </form>
+
+
+              </div>
+            </div>
+            </div>
+          <!-- End featured -->
+        </div>
+      </div>
+    </section>
+    <!-- Features Section End -->
+
+
+    <!-- Capstone Section -->
+    <section id="Capstone" class="section">
+      <!-- Container Starts -->
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Capstone Team</h2>
+          <span>Capstone</span>
+          <p class="section-subtitle">List of Capstone Sections (If no sections shown below, it means you currently do not have a capstone section</p>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Portfolio Controller/Buttons -->
+            <div class="controls text-center">
+
+
+                <div class="col-lg-4 col-md-6 col-xs-12">
+            <div class="featured-box">
+              <div class="featured-icon">
+                <i class="lni-layout"></i>
+              </div>
+              <div class="featured-content">
+                <div class="icon-o"><i class="lni-layout"></i></div>
+
+
+              <table border = 1, align="center">
+                 <tr>
+                     <td> Courses </td>
+                        <th> Section </th>
+
+                 </tr>
+                    {% for row in value2 %}
+                    <tr>
+                    <td> {{ row[0] }} </td>
+                    <th> {{ row[1]}} </th>
+
+                    </tr>
+                {% endfor %}
+                 </table>
+              </div>
+            </div>
+          </div>
+
+
+            </div>
+            <!-- Portfolio Controller/Buttons Ends-->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Portfolio Section Ends -->
+
+
+
+
+
+
+    <!-- Footer Section Start -->
+    <footer>
+
+      <!-- Copyright Start  -->
+      <div id="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="site-info float-left">
+                <p>Crafted by <a href="http://uideck.com" rel="nofollow">UIdeck</a></p>
+              </div>
+              <div class="float-right">
+                <ul class="nav nav-inline">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">About Prime</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">TOS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Return Policy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright End -->
+
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Go To Top Link -->
+    <a href="#" class="back-to-top">
+      <i class="lni-arrow-up"></i>
+    </a>
+
+    <div id="loader">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="../static/style/js/jquery-min.js"></script>
+    <script src="../static/style/js/popper.min.js"></script>
+    <script src="../static/style/js/bootstrap.min.js"></script>
+    <script src="../static/style/js/classie.js"></script>
+    <script src="../static/style/js/color-switcher.js"></script>
+    <script src="../static/style/js/jquery.mixitup.js"></script>
+    <script src="../static/style/js/nivo-lightbox.js"></script>
+    <script src="../static/style/js/owl.carousel.js"></script>
+    <script src="../static/style/js/jquery.stellar.min.js"></script>
+    <script src="../static/style/js/jquery.nav.js"></script>
+    <script src="../static/style/js/scrolling-nav.js"></script>
+    <script src="../static/style/js/jquery.easing.min.js"></script>
+    <script src="../static/style/js/wow.js"></script>
+    <script src="../static/style/js/jquery.vide.js"></script>
+    <script src="../static/style/js/jquery.counterup.min.js"></script>
+    <script src="../static/style/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/style/js/waypoints.min.js"></script>
+    <script src="../static/style/js/form-validator.min.js"></script>
+    <script src="../static/style/js/contact-form-script.js"></script>
+    <script src="../static/style/js/main.js"></script>
+
+  </body>
+</html>

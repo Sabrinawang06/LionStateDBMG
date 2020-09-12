@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/style/user_login.css" rel="stylesheet" , type="text/css">
+          <script type="text/javascript">
+            function evalGroup()
+            {
+            var group = document.login.identity;
+            for (var i=0; i<group.length; i++) {
+            if (group[i].checked)
+            break;
+            }
+            if (i==group.length)
+            return alert("No identity is checked");
+
+            }
+            </script>
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+      <form action="" method="post" class="login-form" name="login">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}" required>
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}" required> <br>
+
+          <input type="radio" name="identity" value="Student" id="radio-one" >
+          <label for="radio-one">Student</label>
+          <input type="radio" name="identity" value="Professor" id="radio-two"  >
+          <label for="radio-two">Professor</label> <br><br>
+
+
+         <button onclick="evalGroup()">Login </button>
+      </form>
+
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+
+    </div>
+    </div>
+  </body>
+</html>
+
+
+
