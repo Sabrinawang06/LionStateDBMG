@@ -1,5 +1,4 @@
-# tutorialcode
-This is an optional base code for Flask and Python.
+Database project
 
 This database project is the final project for class CMPSC 431W
 
