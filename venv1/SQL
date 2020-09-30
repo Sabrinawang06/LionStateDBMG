@@ -1,0 +1,202 @@
+CREATE TABLE student (email TEXT,
+                      password TEXT,
+                      name TEXT,
+                      age TEXT,
+                      gender TEXT,
+                      major TEXT,
+                      street TEXT,
+                      zipcode TEXT,
+                      PRIMARY KEY (email) );
+
+
+CREATE TABLE zipcode (zipcode TEXT,
+                      city TEXT,
+                      state TEXT,
+                      primary key (zipcode),
+                       FOREIGN KEY  (zipcode) REFERENCES student);
+
+CREATE TABLE Professor (email TEXT,
+                        password TEXT,
+                        name TEXT,
+                        age TEXT,
+                        gender TEXT,
+                        office_address TEXT,
+                        department TEXT,
+                        title TEXT,
+                        PRIMARY KEY (email),
+                        FOREIGN KEY (department) REFERENCES Department(dept_name) );
+
+CREATE TABLE Department (dept_id  TEXT,
+                          dept_name TEXT,
+                          dept_head TEXT,
+                          PRIMARY KEY (dept_id),
+                          FOREIGN KEY (dept_head) REFERENCES Professor ON DELETE SET NULL );
+
+CREATE TABLE Course (course_id TEXT,
+                     course_name TEXT,
+                     course_description TEXT,
+                     PRIMARY KEY (course_id)) ;
+
+
+CREATE TABLE Sections (course_id TEXT ,
+                      sec_no TEXT,
+                      section_type TEXT,
+                      "limit" TEXT,
+                      prof_team_id TEXT,
+                      PRIMARY KEY (course_id),
+                      FOREIGN KEY (course_id) REFERENCES Course ON DELETE cascade,
+                      FOREIGN KEY  (prof_team_id) REFERENCES Prof_teams);
+
+
+CREATE TABLE Enrolls (student_email TEXT,
+                      course_id TEXT,
+                      section_no TEXT,
+                      PRIMARY KEY (student_email, course_id,section_no),
+                      FOREIGN KEY  (student_email) REFERENCES Student ON DELETE CASCADE,
+                      FOREIGN KEY (course_id) REFERENCES Course ON DELETE CASCADE ,
+                      FOREIGN KEY  (section_no) REFERENCES Sections ON DELETE CASCADE ) ;
+
+CREATE TABLE Prof_teams (team_id TEXT, PRIMARY KEY (team_id));
+
+CREATE TABLE Prof_team_members (prof_email TEXT,
+                                team_id TEXT,
+                                PRIMARY KEY (team_id),
+                                FOREIGN KEY (team_id) REFERENCES Prof_teams ON DELETE CASCADE ,
+                                FOREIGN KEY  (prof_email) REFERENCES Professor);
+
+CREATE TABLE Homework (course_id TEXT,
+                      sec_no TEXT,
+                      hw_no TEXT,
+                      hw_details TEXT,
+                      PRIMARY KEY (course_id,sec_no,hw_no),
+                      FOREIGN KEY (course_id) REFERENCES Course,
+                      FOREIGN KEY  (sec_no) REFERENCES Sections);
+
+CREATE TABLE Homework_grades (student_email TEXT,
+                              course_id TEXT,
+                              sec_no TEXT,
+                              hw_no TEXT,
+                              grade TEXT,
+                              PRIMARY KEY (student_email, course_id, sec_no,hw_no),
+                              FOREIGN KEY (student_email) REFERENCES student,
+                              FOREIGN KEY (course_id) REFERENCES Course,
+                              FOREIGN KEY  (sec_no) REFERENCES Sections,
+                              FOREIGN KEY (hw_no) REFERENCEs Homework);
+
+
+CREATE TABLE Exams (course_id TEXT,
+                    sec_no TEXT,
+                    exam_no TEXT,
+                    exam_details TEXT,
+                    PRIMARY KEY (course_id,sec_no,exam_no),
+                    FOREIGN KEY (course_id) REFERENCES Course,
+                    FOREIGN KEY  (sec_no) REFERENCES Sections);
+
+
+CREATE TABLE Exam_grades (student_email TEXT,
+                          course_id TEXT,
+                          sec_no TEXT,
+                          exam_no TEXT,
+                          grades TEXT,
+                          PRIMARY KEY (student_email, course_id, sec_no,exam_no),
+                          FOREIGN KEY (student_email) REFERENCES student,
+                          FOREIGN KEY (course_id) REFERENCES Course,
+                          FOREIGN KEY  (sec_no) REFERENCES Sections,
+                          FOREIGN KEY (exam_no) REFERENCES Exams);
+
+CREATE TABLE Capstone_section(course_id TEXT,
+                              sec_no TEXT,
+                              project_no TEXT,
+                              sponsor_id TEXT,
+                              PRIMARY KEY (course_id,sec_no),
+                              FOREIGN KEY (course_id) REFERENCES Course,
+                              FOREIGN KEY  (sec_no) REFERENCES Sections,
+                              FOREIGN KEY (sponsor_id) REFERENCES Professor(email));
+
+
+
+CREATE TABLE Capstone_Team (course_id TEXT,
+                            sec_no TEXT,
+                            team_id TEXT,
+                            project_no TEXT,
+                            PRIMARY KEY (course_id,sec_no,team_id),
+                            FOREIGN KEY (course_id) REFERENCES Course,
+                            FOREIGN KEY  (sec_no) REFERENCES Sections,
+                            FOREIGN KEY  (project_no) REFERENCES Capstone_section);
+
+
+CREATE TABLE Capstone_Team_Members (student_email TEXT,
+                                    team_id TEXT NOT NULL ,
+                                    course_id TEXT,
+                                    sec_no TEXT,
+                                    PRIMARY KEY (student_email),
+                                    FOREIGN KEY (course_id) REFERENCES Course,
+                                    FOREIGN KEY  (sec_no) REFERENCES Sections,
+                                    FOREIGN KEY  (team_id) REFERENCES  Capstone_Team);
+
+CREATE TABLE Capstone_grades(course_id TEXT,
+                            sec_no TEXT,
+                            team_id TEXT,
+                            grade TEXT,
+                            PRIMARY KEY (course_id,sec_no,team_id),
+                            FOREIGN KEY (course_id) REFERENCES Course,
+                            FOREIGN KEY  (sec_no) REFERENCES Sections,
+                            FOREIGN KEY (team_id) REFERENCES Capstone_Team);
+
+
+/*import data*/
+INSERT INTO Department
+SELECT Department AS dept_id, [Department Name] AS dept_name, Email as dept_head
+FROM Professors
+WHERE title='Head';
+
+
+/*course*/
+CREATE TABLE a AS SELECT [Courses 1],	[Course 1 Name],	[Course 1 Details],	[Course 1 Type],	[Course 1 Section],	[Course 1 Section Limit],	[Course 1 HW_No],	[Course 1 HW_Details],	[Course 1 HW_Grade],	[Course 1 EXAM_No],	[Course 1 Exam_Details],	[Course 1 EXAM_Grade]
+ FROM Students;
+CREATE TABLE b AS SELECT[Courses 2],	[Course 2 Name],	[Course 2 Details],	[Course 2 Type],    [Course 2 Section],	[Course 2 Section Limit],	[Course 2 HW_No],	[Course 2 HW_Details],	[Course 2 HW_Grade],	[Course 2 EXAM_No],	[Course 2 Exam_Details],	[Course 2 EXAM_Grade]
+ FROM Students;
+CREATE TABLE c AS SELECT[Courses 3],	[Course 3 Name],	[Course 3 Details],	[Course 3 Type],	[Course 3 Section],	[Course 3 Section Limit],	[Course 3 HW_No],	[Course 3 HW_Details],	[Course 3 HW_Grade],	[Course 3 EXAM_No],	[Course 3 Exam_Details],	[Course 3 EXAM_Grade]
+  FROM Students;
+
+INSERT INTO Course
+SELECT [Courses 1],	[Course 1 Name],	[Course 1 Details] from a
+  union
+SELECT [Courses 2],	[Course 2 Name],	[Course 2 Details] from b
+union
+SELECT [Courses 3],	[Course 3 Name],	[Course 3 Details] FROM c;
+
+
+/*section   COME BACK TO THIS */
+CREATE TABLE Sections_temp AS
+SELECT DISTINCT [Courses 1],		[Course 1 Section],	[Course 1 Type],[Course 1 Section Limit] from a
+  union
+SELECT DISTINCT [Courses 2],		[Course 2 Section],[Course 2 Type],	[Course 2 Section Limit] from b
+ union
+SELECT DISTINCT [Courses 3],		[Course 3 Section],[Course 3 Type],	[Course 3 Section Limit] FROM c;
+
+
+
+INSERT INTO Sections
+SELECT [Courses 1],	[Course 1 Section],	[Course 1 Type],[Course 1 Section Limit],[Team ID]
+FROM Sections_temp, Professors
+WHERE Sections_temp.[Courses 1]=Professors.Teaching
+
+/* Student and Professor*/
+INSERT INTO Student
+SELECT Email AS email, Password AS password, [Full Name] AS name, Age AS age, Gender AS gender, Major as major, Street as street, Zip as zipcode
+FROM Students;
+
+INSERT INTO Professor
+SELECT Email AS email, Password AS password, Name AS name, Age AS age, Gender AS gender, Office AS office_address, Department as department, Title as title
+FROM Professors;
+
+
+/*prof team and team member*/
+INSERT INTO Prof_teams
+SELECT DISTINCT [Team ID] as team_id
+FROM Professors;
+
+INSERT INTO Prof_team_members
+SELECT [Team ID] as team_id, Email as email
+FROM Professors
